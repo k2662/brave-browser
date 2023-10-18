@@ -24,7 +24,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git "$HOME/depot_tools" && echo "export PATH="$HOME/depot_tools:$PATH" >>"$HOME/.bashrc"
+    - run: | 
+        git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git "$HOME/depot_tools"
+        echo "export PATH="$HOME/depot_tools:$PATH" >> "$HOME/.bashrc"
     - run: npm install
     - run: npm run init
     - run: npm run build
